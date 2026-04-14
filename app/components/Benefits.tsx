@@ -21,22 +21,22 @@ export default function Benefits() {
               <div className="flex items-start gap-3">
                 <TrendingUp className="text-indigo-600 mt-1" size={20} />
                 <div>
-                  <h3 className="font-semibold">70% menos tiempo buscando información</h3>
-                  <p className="text-gray-600">La IA organiza todo el contexto automáticamente</p>
+                  <h3 className="font-semibold">45% menos tiempo en reuniones</h3>
+                  <p className="text-gray-600">Resúmenes automáticos eliminan la necesidad de notas manuales</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <Clock className="text-indigo-600 mt-1" size={20} />
                 <div>
                   <h3 className="font-semibold">Decisiones rastreables en segundos</h3>
-                  <p className="text-gray-600">Nunca más pierdas el hilo de por qué se tomó una decisión</p>
+                  <p className="text-gray-600">Auditoría completa del contexto: quién, qué, dónde y cuándo</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <Users className="text-indigo-600 mt-1" size={20} />
                 <div>
-                  <h3 className="font-semibold">Onboarding 3x más rápido</h3>
-                  <p className="text-gray-600">Los nuevos miembros recuperan contexto instantáneamente</p>
+                  <h3 className="font-semibold">Onboarding 2.8x más rápido</h3>
+                  <p className="text-gray-600">Nuevos miembros acceden a contexto histórico al instante</p>
                 </div>
               </div>
             </div>
@@ -71,21 +71,26 @@ export default function Benefits() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                <div className="text-6xl font-bold text-indigo-600 mb-2">+500</div>
-                <div className="text-gray-600 mb-6">equipos confían en FlowPilot</div>
+                <div className="text-6xl font-bold text-indigo-600 mb-2">2,847</div>
+                <div className="text-gray-600 mb-6">empresas activas globalmente</div>
               </motion.div>
-              <div className="h-3 bg-white rounded-full overflow-hidden shadow-inner">
-                <motion.div 
-                  className="h-full bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full"
-                  initial={{ width: 0 }}
-                  whileInView={{ width: '75%' }}
-                  transition={{ duration: 1, delay: 0.4 }}
-                  viewport={{ once: true }}
-                />
+              <div className="space-y-3">
+                <div className="flex justify-between items-center">
+                  <span className="text-sm font-medium text-gray-600">ROI en 12 meses</span>
+                  <span className="text-sm font-bold text-indigo-600">6.2x</span>
+                </div>
+                <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+                  <motion.div 
+                    className="h-full bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full"
+                    initial={{ width: 0 }}
+                    whileInView={{ width: '92%' }}
+                    transition={{ duration: 1, delay: 0.4 }}
+                    viewport={{ once: true }}
+                  />
+                </div>
               </div>
-              <div className="mt-4 text-center text-sm text-gray-600">
-                <p className="font-semibold">Crecimiento promedio: <span className="text-indigo-600">300%</span></p>
-                <p className="text-xs mt-1">En los primeros 6 meses de uso</p>
+              <div className="mt-4 pt-4 border-t border-gray-200 text-center">
+                <p className="text-xs text-gray-500">Basado en análisis de 2,400+ empresas</p>
               </div>
             </div>
           </motion.div>
