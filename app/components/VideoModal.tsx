@@ -35,7 +35,7 @@ export default function VideoModal({ isOpen, onClose }: VideoModalProps) {
 
         <div className="relative w-full aspect-video bg-black rounded-xl overflow-hidden shadow-2xl">
           <iframe
-            src="https://www.youtube.com/embed/9bZkp7q19f0?autoplay=1"
+            src="https://www.youtube.com/embed/8p5hxNlNQfM?autoplay=1"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen

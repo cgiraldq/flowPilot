@@ -100,8 +100,9 @@ export default function Header() {
               })}
               <button 
                 onClick={() => {
-                  setIsEarlyAccessOpen(true)
                   setMobileMenuOpen(false)
+                  // Pequeño delay para asegurar que el menú se cierre antes de abrir el modal
+                  setTimeout(() => setIsEarlyAccessOpen(true), 100)
                 }}
                 className="mx-4 px-4 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-medium transition-all"
               >
