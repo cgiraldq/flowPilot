@@ -2,8 +2,12 @@
 
 import { motion } from 'framer-motion'
 import { TrendingUp, Clock, Users } from 'lucide-react'
+import { useState } from 'react'
+import EarlyAccessModal from './EarlyAccessModal'
 
 export default function Benefits() {
+  const [isEarlyAccessOpen, setIsEarlyAccessOpen] = useState(false)
+
   return (
     <section id="benefits" className="py-20">
       <div className="container-custom">
@@ -43,13 +47,18 @@ export default function Benefits() {
             <div className="flex gap-4">
               <motion.button 
                 whileHover={{ x: 4 }}
-                className="text-indigo-600 font-semibold hover:text-indigo-700 transition-colors"
+                onClick={() => {
+                  const testimonialsSection = document.getElementById('testimonials')
+                  testimonialsSection?.scrollIntoView({ behavior: 'smooth' })
+                }}
+                className="text-indigo-600 font-semibold hover:text-indigo-700 transition-colors cursor-pointer"
               >
                 Ver casos de éxito →
               </motion.button>
               <motion.button 
                 whileHover={{ x: 4 }}
-                className="text-indigo-600 font-semibold hover:text-indigo-700 transition-colors"
+                onClick={() => setIsEarlyAccessOpen(true)}
+                className="text-indigo-600 font-semibold hover:text-indigo-700 transition-colors cursor-pointer"
               >
                 Contactar ventas →
               </motion.button>
@@ -96,6 +105,8 @@ export default function Benefits() {
           </motion.div>
         </div>
       </div>
+
+      <EarlyAccessModal isOpen={isEarlyAccessOpen} onClose={() => setIsEarlyAccessOpen(false)} />
     </section>
   )
 }

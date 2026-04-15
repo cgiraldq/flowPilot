@@ -2,6 +2,8 @@
 
 import { motion } from 'framer-motion'
 import { Star } from 'lucide-react'
+import { useState } from 'react'
+import EarlyAccessModal from './EarlyAccessModal'
 
 const testimonials = [
   {
@@ -51,6 +53,7 @@ const testimonials = [
 const logos = ['TechVenture', 'Creative Studio', 'DataFlow', 'DesignLabs', 'InnovateLabs', 'CloudWorks', 'Momentum']
 
 export default function SocialProof() {
+  const [isEarlyAccessOpen, setIsEarlyAccessOpen] = useState(false)
   return (
     <section id="testimonials" className="py-20 bg-gray-50">
       <div className="container-custom">
@@ -129,11 +132,13 @@ export default function SocialProof() {
           <motion.button
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => setIsEarlyAccessOpen(true)}
             className="px-8 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all"
           >
             Solicitar demo personalizada
           </motion.button>
         </motion.div>
+        <EarlyAccessModal isOpen={isEarlyAccessOpen} onClose={() => setIsEarlyAccessOpen(false)} />
       </div>
     </section>
   )
