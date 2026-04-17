@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { X } from 'lucide-react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 interface EarlyAccessModalProps {
   isOpen: boolean
@@ -13,6 +13,19 @@ export default function EarlyAccessModal({ isOpen, onClose }: EarlyAccessModalPr
   const [email, setEmail] = useState('')
   const [company, setCompany] = useState('')
   const [submitted, setSubmitted] = useState(false)
+
+  // Prevenir scroll del body cuando el modal está abierto
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [isOpen])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -36,7 +49,7 @@ export default function EarlyAccessModal({ isOpen, onClose }: EarlyAccessModalPr
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       onClick={onClose}
-      className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 backdrop-blur-sm"
+      className="fixed inset-0 bg-black/50 z-[60] flex items-center justify-center p-4 backdrop-blur-sm"
     >
       <motion.div
         initial={{ scale: 0.9, opacity: 0, y: 20 }}

@@ -2,11 +2,11 @@
 
 import { motion } from 'framer-motion'
 import { TrendingUp, Clock, Users } from 'lucide-react'
-import { useState } from 'react'
+import { useModalContext } from '../contexts/ModalContext'
 import EarlyAccessModal from './EarlyAccessModal'
 
 export default function Benefits() {
-  const [isEarlyAccessOpen, setIsEarlyAccessOpen] = useState(false)
+  const { openEarlyAccess, closeEarlyAccess, modals } = useModalContext()
 
   return (
     <section id="benefits" className="py-20">
@@ -57,7 +57,7 @@ export default function Benefits() {
               </motion.button>
               <motion.button 
                 whileHover={{ x: 4 }}
-                onClick={() => setIsEarlyAccessOpen(true)}
+                onClick={openEarlyAccess}
                 className="text-indigo-600 font-semibold hover:text-indigo-700 transition-colors cursor-pointer"
               >
                 Contactar ventas →
@@ -106,7 +106,7 @@ export default function Benefits() {
         </div>
       </div>
 
-      <EarlyAccessModal isOpen={isEarlyAccessOpen} onClose={() => setIsEarlyAccessOpen(false)} />
+      <EarlyAccessModal isOpen={modals.earlyAccess} onClose={closeEarlyAccess} />
     </section>
   )
 }

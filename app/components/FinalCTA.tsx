@@ -2,13 +2,12 @@
 
 import { motion } from 'framer-motion'
 import { ArrowRight, Play } from 'lucide-react'
-import { useState } from 'react'
+import { useModalContext } from '../contexts/ModalContext'
 import EarlyAccessModal from './EarlyAccessModal'
 import VideoModal from './VideoModal'
 
 export default function FinalCTA() {
-  const [isEarlyAccessOpen, setIsEarlyAccessOpen] = useState(false)
-  const [isVideoOpen, setIsVideoOpen] = useState(false)
+  const { openEarlyAccess, closeEarlyAccess, openVideo, closeVideo, modals } = useModalContext()
 
   return (
     <section className="py-20 relative overflow-hidden">
@@ -66,7 +65,7 @@ export default function FinalCTA() {
               viewport={{ once: true }}
             >
               <motion.button
-                onClick={() => setIsEarlyAccessOpen(true)}
+                onClick={openEarlyAccess}
                 whileHover={{ scale: 1.1, boxShadow: '0 0 30px rgba(255, 255, 255, 0.3)' }}
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-4 bg-white text-indigo-600 rounded-lg font-bold transition-all duration-300 flex items-center justify-center gap-2 shadow-xl hover:shadow-2xl"
@@ -81,7 +80,7 @@ export default function FinalCTA() {
               </motion.button>
 
               <motion.button
-                onClick={() => setIsVideoOpen(true)}
+                onClick={openVideo}
                 whileHover={{ scale: 1.08 }}
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-4 border-2 border-white bg-white/10 backdrop-blur-md rounded-lg font-bold hover:bg-white/20 transition-all duration-300 flex items-center justify-center gap-2"
@@ -109,12 +108,12 @@ export default function FinalCTA() {
         </motion.div>
 
         <EarlyAccessModal 
-          isOpen={isEarlyAccessOpen} 
-          onClose={() => setIsEarlyAccessOpen(false)} 
+          isOpen={modals.earlyAccess} 
+          onClose={closeEarlyAccess} 
         />
         <VideoModal 
-          isOpen={isVideoOpen} 
-          onClose={() => setIsVideoOpen(false)} 
+          isOpen={modals.video} 
+          onClose={closeVideo} 
         />
       </div>
     </section>

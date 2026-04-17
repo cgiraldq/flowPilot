@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import { ModalProvider } from './contexts/ModalContext'
 
 export const metadata: Metadata = {
   title: 'FlowPilot - AI-powered workspace for teams',
@@ -13,7 +14,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body>{children}</body>
+      <body>
+        <ModalProvider>
+          {children}
+        </ModalProvider>
+      </body>
     </html>
   )
 }

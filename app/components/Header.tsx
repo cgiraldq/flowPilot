@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
-import EarlyAccessModal from './EarlyAccessModal'
+import { useModalContext } from '../contexts/ModalContext'
 
 const navigation = [
   { name: 'Características', href: '#features' },
@@ -13,7 +13,7 @@ const navigation = [
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('')
-  const [isEarlyAccessOpen, setIsEarlyAccessOpen] = useState(false)
+  const { openEarlyAccess } = useModalContext()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -63,7 +63,7 @@ export default function Header() {
               )
             })}
             <button 
-              onClick={() => setIsEarlyAccessOpen(true)}
+              onClick={openEarlyAccess}
               className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-all duration-200 hover:scale-105"
             >
               Acceso anticipado
@@ -101,8 +101,7 @@ export default function Header() {
               <button 
                 onClick={() => {
                   setMobileMenuOpen(false)
-                  // Pequeño delay para asegurar que el menú se cierre antes de abrir el modal
-                  setTimeout(() => setIsEarlyAccessOpen(true), 100)
+                  openEarlyAccess()
                 }}
                 className="mx-4 px-4 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-medium transition-all"
               >
@@ -112,10 +111,6 @@ export default function Header() {
           </div>
         )}
 
-        <EarlyAccessModal 
-          isOpen={isEarlyAccessOpen} 
-          onClose={() => setIsEarlyAccessOpen(false)} 
-        />
       </div>
     </header>
   )
